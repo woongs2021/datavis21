@@ -1,4 +1,4 @@
-# datavis21
-The website for Data Visualization 2021S class.
-
+# Data Visualization 20S
 Welcome, class!
+
+The class website is https://ccubelab.github.io/datavis21/
