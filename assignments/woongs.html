@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+        <title>Data Visualization</title>
+    </head>
+    <body>
+        <!-- Site Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid p-3">
+                <a class="navbar-brand" href="assignments.html"><span>&#8592;</span> Back to Assignments</a>
+            </div>
+        </nav>
+        <!-- End of Site Navigation -->
+
+        <!-- Main Container -->
+        <div class="container">
+            <!-- Write your own code below -->
+            <div class="col">
+                <script src="https://d3js.org/d3.v4.min.js"></script>
+                <link rel="stylesheet" type="text/css" href="mystyle_02.css" href="mycode_02.js" />
+                <div class="row justify-content-md-center">
+                    <div class="col-10">
+                    <body>
+                        <h1>2010년에서 2019년까지 디자인 활용기업 수</h1>
+                    </body>
+                    출처 : 한국디자인진흥원 [산업디자인통계조사]
+                    <br>
+                    주석 : 2012년부터 디자인활용기업은 디자인산업특수분류체계를 기준으로 조사 됨
+                    
+                    <br><br>
+                    한국디자인진흥원 산업디자인통계조사에 따르면 2010년부터 2019년까지 꾸준히 디자인 활용기업 수, 디자인 산업 규모, 디자인의 경제적 가치는 꾸준히 증가해왔다.
+                    <br><br>
+                    <br>
+                    단위 : 개사/명/억원
+                    <br>
+                    <style>
+                        .grid line {
+                            stroke: rgb(165, 165, 165);
+                            stroke-opacity: 0.7;
+                        }
+                        .lineChart {
+                            fill: none;
+                            stroke: rgb(180, 70, 165);
+                            stroke-width: 2.5px;
+                        }
+                        .lineChart:hover {
+                            stroke: rgb(54, 19, 209);
+                            stroke-width: 5px;
+                        }
+                    </style>
+                            
+                        <svg width="550" height="350"></svg>
+                        <script>
+                            
+                            var series = ["디자인활용기업수","디자인산업규모","디자인의 경제적가치"];
+                            
+                            var dataset = [ 
+                                {'2013년':81921, '2014년':87441, '2015년': 97572, '2016년':117934, '2017년':125278, '2018년': 133216},
+                                {'2013년':130672, '2014년':143701, '2015년': 156516, '2016년':169137, '2017년':175451, '2018년': 178625},
+                                {'2013년':850511, '2014년':930150, '2015년': 941810, '2016년':1038440, '2017년':1173899, '2018년': 1243395}
+                                ];
+                            
+                            var keys = d3.keys(dataset[0]);
+                            var data = [];
+                            
+                            dataset.forEach(function(d, i) {
+                                    data[i] = keys.map(function(key) { return {x: key, y: d[key]}; })
+                            });
+                            
+                            var margin = {left: 40, top: 10, right: 10, bottom: 20};
+                            var svg = d3.select("svg");
+                            var width  = parseInt(svg.style("width"), 10) - margin.left - margin.right;
+                            var height = parseInt(svg.style("height"), 10)- margin.top  - margin.bottom;
+                            
+                            var svgG = svg.append("g")
+                                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                            
+                            var xScale = d3.scalePoint()//scaleBand() scaleOrdinal
+                                .domain(keys)
+                                .rangeRound([0, width]);
+                            
+                            var yScale = d3.scaleLinear()
+                                .domain([0, d3.max(dataset, function(d) { return d3.max(keys, function(key) { return d[key];});})])
+                                .nice()
+                                .range([height, 0]);
+                            
+                            var colors = d3.scaleOrdinal(d3.schemeCategory20);
+                            
+                            svgG.append("g")
+                                .attr("class", "grid")
+                                .attr("transform", "translate(0," + height + ")")
+                                .call(d3.axisBottom(xScale)
+                                    .tickSize(-height)
+                                );
+                            
+                            svgG.append("g")
+                                .attr("class", "grid")
+                                .call(d3.axisLeft(yScale)
+                                    .ticks(5)
+                                    .tickSize(-width)
+                                );
+                            
+                            var line = d3.line()
+                                    .curve(d3.curveBasis)
+                                .x(function(d) { return xScale(d.x); })
+                                .y(function(d) { return yScale(d.y); });
+                            
+                            var lineG = svgG.append("g")
+                                .selectAll("g")
+                                    .data(data)
+                                .enter().append("g");
+                            
+                            lineG.append("path")
+                                .attr("class", "lineChart")
+                                .style("stroke", function(d, i) { return colors( series[i]); })
+                                .attr("d", line);
+                            
+                            var legend = svgG.append("g")
+                                .attr("text-anchor", "end")
+                                .selectAll("g")
+                                .data(series)
+                                .enter().append("g")
+                                .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+                            
+                            legend.append("rect")
+                                .attr("x", width - 20)
+                                .attr("width", 19)
+                                .attr("height", 19)
+                                .attr("fill", colors);
+                            
+                            legend.append("text")
+                                .attr("x", width - 30)
+                                .attr("y", 9.5)
+                                .attr("dy", "0.32em")
+                                .text(function(d) { return d; });
+                        </script>
+                        
+                        <br><br>
+                        디자인 사용률도 점진적으로 늘어났는데, 2017년부터 드라마틱하게 성장했다
+                        <br><br>
+                        <div class="one-graph"></div>
+                        <script>
+                            var w = 400, h = 400;
+                            var dataName = ["2013년", "2014년", "2015년", "2016년", "2017년", "2018년"];
+                            var graphData = [12.8, 13.0, 13.7, 16.0, 34.4, 35.9];
+                            var colorData = ["#55C9E0", "#E6B3C8", "#E0D782", "#6088E0", "#55E0AB", "#B9E4A7"];
+                            var pie = d3.pie();
+                            var arc = d3.arc().innerRadius(70).outerRadius(200);
+                            
+                            var svg = d3.select(".one-graph")
+                                .append("svg")
+                                .attr("width", w)
+                                .attr("height", h)
+                                .attr("id", "graphWrap");
+                            
+                            var g = svg.selectAll(".pie")
+                                .data(pie(graphData))
+                                .enter()
+                                .append("g")
+                                .attr("class", "pie")
+                                .attr("transform","translate("+w/2+","+h/2+")");
+                            
+                            g.append("path")
+                                .style("fill", function(d, i) {
+                                    return colorData[i];
+                                }) 
+                                .transition()
+                                .duration(400)
+                                .delay(function(d, i) { 
+                                    return i * 400;
+                                })
+                                .attrTween("d", function(d, i) { 
+                                    var interpolate = d3.interpolate(
+                                        {startAngle : d.startAngle, endAngle : d.startAngle}, 
+                                        {startAngle : d.startAngle, endAngle : d.endAngle} 
+                                    );
+                                    return function(t){
+                                        return arc(interpolate(t)); 
+                                    }
+                                });
+                            
+                            g.append("text")
+                                .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+                                .attr("dy", ".35em")
+                                .style("text-anchor", "middle")
+                                .text(function(d, i) {
+                                    return  d.endAngle-d.startAngle > 0.2 ?
+                                            dataName[i] + " (" + Math.round(1000*(d.endAngle-d.startAngle)/(Math.PI*2))/10 + "%)" : ""
+                                });
+                            
+                            svg.append("text")
+                                .attr("class", "total")
+                                .attr("transform", "translate("+(w/2-35)+", "+(h/2+5)+")")
+                                .text(" Total:" + d3.sum(graphData));
+                        </script>
+                        <br><br>
+                        결론적으로 국내 디자인 업계는 전반적으로 꾸준히 성장세를 보이고 있고 지난 6년 동안 드라마틱한 변동은 없었다.
+                        <b><mark>하지만 2020년 크나큰 변화였던 코로나 시국이 디자인 업계에 어떠한 영향을 끼쳤는지는 미지수이므로 추가 연구가 필요하다.</mark></b>
+                        <br><br>
+                        *추신: 디자인 업계는 꾸준히 성장했으나 특히 2017년등 크게 디자인 업계가 성장했던 요인에 대해서 다각도로 리서치가 필요하다.
+                      
+
+            </div>
+
+
+            <!-- End your code here -->
+        </div>
+        <!-- End of Main Container -->
+
+        <div class="p-3"></div>
+
+        <!-- Optional JavaScript; choose one of the two! -->
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+        <!--
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+        -->
+    </body>
+</html>
