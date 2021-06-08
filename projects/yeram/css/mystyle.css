@@ -1,0 +1,29 @@
+svg {
+  border: 1px solid;
+}
+.bar {
+  fill: rgb(128, 163, 240);
+}
+.bar:hover {
+  fill: rgb(9, 0, 128);
+/*     DarkSlateBlue; */
+  cursor: pointer;
+}
+.text {
+  fill: white;
+  font-weight:bold;
+}
+.grid line {
+stroke: lightgrey;
+stroke-opacity: 0.7;
+shape-rendering: crispEdges;
+}
+.toolTip {
+  position: absolute;
+  border: 0 none;
+  border-radius: 4px 4px 4px 4px;
+  background-color: white;
+  padding: 5px;
+  text-align: center;
+  font-size: 11px;
+}
