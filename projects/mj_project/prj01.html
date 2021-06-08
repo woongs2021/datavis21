@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+        <title>Data Visualization</title>
+		<style>
+      body {
+        margin: 0;
+        font: Segoe UI;
+      }
+      .domain path {
+        display: none;
+      }
+      .marker-line {
+        fill: none;
+        stroke: #cce2e4;
+        stroke-width: 1px;
+      }
+      .marker-line.active {
+        stroke: #2a9bc0;
+        stroke-width: 3px;
+      }
+      text {
+        font-size: 2em;
+      }
+      .domain {
+        display: none;
+      }
+      .tick line {
+        stroke: #d6d6d6b2;
+      }
+      .tick text {
+        fill: #636363;
+        font-size: 14px;
+      }
+      .axis-label, .title, .tooltip-stroke {
+        fill: #808080;
+        font-size: 14px
+      }
+      .tooltip-stroke {
+        stroke: #000000;
+        stroke-width: 1px;
+      } 
+      .tooltip {
+        stroke: #2a9bc0;
+        font-size: 18px
+      }
+      .tooltip, .title {
+        fill: hsl(48, 85, 204);
+      }
+      .voronoi path {
+        fill: none;
+
+        pointer-events: all;
+      }
+    </style>
+    <script src="https://unpkg.com/react@16.9.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.9.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/d3@5.11.0/dist/d3.min.js"></script>
+    <script src="https://unpkg.com/d3-array@2.4.0/dist/d3-array.min.js"></script>
+    <script src="https://unpkg.com/d3-delaunay@5.2.1/dist/d3-delaunay.min.js"></script>
+    </head>
+    
+    <body>
+
+<!-- Site Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid p-3">
+                <a class="navbar-brand" href="../test/projects.html"><span>&#8592;</span> Back to Projects</a>
+            </div>
+        </nav>
+        <!-- End of Site Navigation -->
+
+        <!-- Main Container -->
+
+            <!-- Write your own code below -->
+    
+              <br>
+              <div>
+              <h1 class="text-center"><p class="lh-base">Virtual Exhibition Project<br>:Emotional Refocus</p></h1>
+                  <figcaption class="text-center"> 
+                           #Media art  #DataVis  #VR Market Trends  #Covid-19   #Covid&Happiness  #Twitter HashTag
+                </figcaption>
+                <div class="row justify-content-md-center">
+                    <div class="col-10">
+                <p><strong><h5>1. Background </h5></strong></p>
+    <p><strong>Virtual Exhibition 시장 동향</strong></p>
+    <p></p><img src="../test/mj_project_02.jpg" style="width:50%"></p>
+    <p>그동안 집 밖 공연장에서만 즐길 수 있었던 갤러리,공연 등이 코로나19 일상에서는 집 안에서 볼 수 있는 콘텐츠가 되면서 집 안에서의 문화생활이 확장되고 있다. 특히 가상현실(VR)을 활용한 비대면 문화콘텐츠가 코로나19 시대에 일상을 즐기는 중요한 수단이 되고 있다. 아래 차트는 
+갤러리가 Physical Fair에서 벗어나 Online으로 바뀌고 있음을 보여주고 있다(Source: Art Economics). Art economics data set에 따르면 온라인 판매, 전시회가 19년도 대비 약60% 증가하였고, New tech 사용률 또한 40% 이상 증가한것으로 나타났다. Fair, Galleries only viewing rooms을 이용하는 약 40%의 이용자가 아트피스를 구매하기 위해서이고 약 45% 이용자는 그냥 Browsing하기 위해서라고 밝혔다.  </p>
+    <p>
+        <div class='tableauPlaceholder' id='viz1622985346537' style='position: relative'><noscript><a href='#'><img alt='Galleries turn online and away from phsycal fairsSurveyed galleries were asked to rank their top three priorites in each period ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;9_&#47;9_16229839954150&#47;1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='9_16229839954150&#47;1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;9_&#47;9_16229839954150&#47;1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='ko-KR' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1622985346537');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </p>        
+    <p>
+        <div class='tableauPlaceholder' id='viz1622985292739' style='position: relative'><noscript><a href='#'><img alt='How collectors navigate and use online platformsCollectors&#39; purpose of visiting virtual sites, by channel, H1 2020(%)■ Used to purchase art  ■ Browsing or other use■ Did not use ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;8_&#47;8_16229850060230&#47;1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='8_16229850060230&#47;1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;8_&#47;8_16229850060230&#47;1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='ko-KR' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1622985292739');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </p>
+    <br>
+	<br>
+	<br>
+    <p><strong>Covid-19로 인한 일상 생활 변화, 국가별 행복 지수</strong></p>
+    <p>코로나19 이후 일상은 ‘집’을 중심으로 큰 변화가 나타났다. ‘집 밖’으로의 야외활동은 집 근처로 위축된 반면 ‘집 안’에서의 문화생활은 비대면 서비스와 함께 확대됐다. 이러한 비대면 생활로 인해 우울, 짜증 등의 부정적 감성이 더 심화될 수 있을 것으로 보고 국가별 행복 지수에 대해서 분석해보았다. 행복 지수의 척도는 사회적 지지, 건강한 기대 수명, 인생 선택의 자유, 관대함, 부패에 대한 인식 등이다. 결과는 핀란드를 비롯한 북유럽 국가가 행복 지수가 가장 높은것으로 나타났다. 이를 바탕으로 핀란드의 문화 생활 지수와 행복 지수의 연결성이 있는지 알아보기 위해 핀란드 문화생활 소비자 지수 변동성을 함께 분석하였다.  </p>
+    <p>
+    <div class='tableauPlaceholder' id='viz1622990771918' style='position: relative'><noscript><a href='#'><img alt='2021 World Happiness Report ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;20&#47;2021WorldHappinessReport_16229753337630&#47;2021WorldHappinessReport&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='2021WorldHappinessReport_16229753337630&#47;2021WorldHappinessReport' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;20&#47;2021WorldHappinessReport_16229753337630&#47;2021WorldHappinessReport&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='ko-KR' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1622990771918');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </p>
+    <p>
+        <div class='tableauPlaceholder' id='viz1622990992287' style='position: relative'><noscript><a href='#'><img alt='Consumer Price Index: Recreation and culture total for FinlandSource: Organization for Economic Co-operation and Development Frequency:  Monthly ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;3_&#47;3_16229909835660&#47;1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='3_16229909835660&#47;1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;3_&#47;3_16229909835660&#47;1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='ko-KR' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1622990992287');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </p>
+	<br>
+	<br>
+    <p>코로나 생활 중 사람들의 관심사를 알아보기위해 2021년 5월 트위터 해쉬테그를 분석한 결과 #EuropaLeagueFinal  #방탄소년단RM  #Always_shining_SHINee  #BUTTERARMYPARTY와 같은 테그가 눈에 띄었다. </p>
+    <p>
+        <div class='tableauPlaceholder' id='viz1622992219380' style='position: relative'><noscript><a href='#'><img alt='시트 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Wo&#47;Word_Cloud_Tweet&#47;1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Word_Cloud_Tweet&#47;1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Wo&#47;Word_Cloud_Tweet&#47;1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='ko-KR' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1622992219380');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </p>
+	<br>
+	<br>
+    <p><Strong>Projection of AR/VR Market Size by 2025</Strong></p>
+    <p>증강 현실(AR)과 가상 현실(VR)은 최근 몇 년 동안 특히 게임과 소셜 미디어에서 폭발적인 관심을 보여왔다.
+        Goldman Sachs에서 보수적으로 잡은 AR/VR 시장의 2025년 연간 매출은 800억 달러, 4억 4,500만 사용자이다.
+        AR과 VR은 다양한 산업 분야에서 사용되고 있고 그 중 비디오 게임과 소셜 미디어가 지금까지 가장 두드러진 역할을 해왔다.
+        예를 들어 소셜 미디어 앱 Snapchat이 처음 등장했을 때 초기 판매 포인트는 AR을 통합한 사진 및 비디오 필터였다.
+        심지어 Facebook도 2013 년과 2016 년에 Snapchat을 인수하려는 시도를 실패한 이후 이러한 기능을 duplicate하고 앱 전체에 자체 AR 콘텐츠를 늘렸다.
+        </p>
+
+    <p>페이스북은 뿐만 아니라 오큘러스 VR해드셋을 개발하고
+        2018 년 말, AR 콘텐츠가 통합된 회사 최초의 화상 채팅용 자체 브랜드 스마트 카메라 장치인 Portal을 출시하였다.
+        그리고 불과 몇 달 전 페이스 북은 올인원 게임 헤드셋인 Oculus Quest2를 출시했다 .
+        이는 10억 VR 사용자를 확보 하려는 Mark Zuckerberg가 공개한 목표의 일부이다. 뿐만 아니라 의료 분야에서도 AR 헤드셋은 외과의사의 시야에서 영상 데이터와 환자 정보를 볼 수 있도록 지원하여 의료 오류를 최소화하는데 도움이 되도록 개발되고 있다.
+        부동산과 엔터테인먼트 모두에서 기업들은 사람들이 부동산과 landscape에 대한 몰입형 가상 투어를하거나 집에서 편안하게 콘서트 및 스포츠 게임과 같은 라이브 이벤트를 경험할 수 있는 3D 이미징 플랫폼용 고급 카메라를 개발 하고 있다.
+        AR과 VR의 개발은 아직 초기 단계이나 앞으로가 더 기대되는 분야이다.    
+        </p>
+
+        <div class='tableauPlaceholder' id='viz1623148477318' style='position: relative'><noscript><a href='#'><img alt='Projection of AR&#47;VR Users by 2025 (Millions)Source: Goldman Sachs ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;13&#47;13_16231484659120&#47;1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='13_16231484659120&#47;1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;13&#47;13_16231484659120&#47;1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='ko-KR' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1623148477318');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>    
+	<br>
+	<br>
+	<p><strong>코로나가 바꾼 '집콕' 일상… 콘솔·VR 등 新시장 급속 성장중</strong></p>
+     <!-- End your code here -->
+        </div>
+
+        <!-- End of Main Container
+        -->
+
+        
+
+        <!-- Optional JavaScript; choose one of the two! -->
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+</div>  
+    <div id="root"></div>
+    <script src="bundle.js"></script>
+	<p><strong>개인 프로젝트: Emotional Refocus</strong></p>
+	<p><img src="mj_project_03.jpg" style="width:50%"></p>
+	<video heigh="1500px" scr="mj_video.mp4" controls autoplay muted playsinline></video>
+
+	
+
+</body>
+</html>
