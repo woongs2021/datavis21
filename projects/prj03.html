@@ -1,46 +1,878 @@
+
 <!doctype html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-        <title>Data Visualization</title>
-    </head>
-    <body>
-        <!-- Site Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid p-3">
-                <a class="navbar-brand" href="projects.html"><span>&#8592;</span> Back to Projects</a>
-            </div>
-        </nav>
-        <!-- End of Site Navigation -->
+    <title>Data Visualization</title>
+</head>
+<body>
+<!-- Site Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid p-3">
+        <a class="navbar-brand" href="assignments.html"><span>&#8592;</span> Back to Assignments</a>
+    </div>
+</nav>
+<!-- End of Site Navigation -->
 
-        <!-- Main Container -->
-        <div class="container">
-            <!-- Write your own code below -->
+<!-- Main Container -->
+<div class="container">
+    <!-- Write your own code below -->
+    <div class="col">
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <link rel="stylesheet" type="text/css" href="mystyle_02.css" href="mycode_02.js" />
+        <div class="row justify-content-md-center">
+            <div class="col-10">
+
+              
+
+                <h1>2012년에서 2019년까지 디자인 통계 데이터 분석 리포트</h1>
+                <br>
+
+                출처 : 한국디자인진흥원 [산업디자인통계조사]
+                <br>
+                주석 : 2012년부터 디자인활용기업은 디자인산업특수분류체계를 기준으로 조사 됨
+                <br>
+                <br>
+                <img src="001.png" width="1100" height="733">
+                <br>
+                <br>
+                <p>한국디자인진흥원에서 2012년부터 매년 발행하는 산업디자인통계조사는 디자인활용업체, 디자인전문업체, 
+                  중앙부처 등 국내 디자인 통계 중 가장 폭넓은 표본조사를 진행한 조사 결과로 신뢰할 수 있는 정보를 가지고 있다.
+                  본 프로젝트에서는 2012년부터 2019년까지 발행된 산업디자인통계조사 데이터를 바탕으로 주요 디자인 업계의 이슈를
+                  데이터 시각화를 통해 알아보았다. </p>
+                <br>
+                <br>
+                <img src="002.png" width="1100" height="585">
+                <br>
+                <P>산업디자인통계조사 중 본 프로젝트에서는 다음 10개의 주요 통계데이터를 활용하였다. 데이터수집 기준은
+                  업계 전반적인 현황을 파악할 수 있는지, 교육 인력 및 현황을 파악할 수 있는지, 디자이너의 현재와 미래 예측이
+                  가능한 데이터인지를 기준으로 선정하였으며 2012년부터 2019년까지 데이터 소실이 없이 꾸준히 기록되어 있는 데이터를
+                  기준으로 하였다. 2019년 통계자료가 가장 최신 자료이며 추후 2020년, 2021년 자료가 업데이트된다면 본 데이터에 추가할
+                  수 있을 것으로 보인다.
+                </P>
+               
+               
+
+                <br><br> <br><br>
+
+                 <!-- 01. 디자인산업규모 및 인력 -->
+
+                 <h1>01. 디자인산업규모 및 인력 </h1>
+                 <br>
+                 디자인산업 규모 및 인력은 2012년부터 2019년까지 꾸준히 우상향으로 성장했다. 2012년 약 13조 규모의 시장은
+                 2019년 18조 규모 이상으로 성장하였다. 디자인 인력 또한 26만명의 규모에서 33만명 규모로 약 1.3배 성장했다.
+                 특히 2012~17년 구간이 가장 가파르게 성장한 것을 확인할 수 있다.
+                 <br><br>
+
+                     <script type="text/javascript">
+                         google.charts.load('current', {'packages':['corechart']});
+                         google.charts.setOnLoadCallback(drawChart010);
+
+                         function drawChart010() {
+                             var data = google.visualization.arrayToDataTable([
+                                 ['Year', '디자인산업규모' ],
+                                 ['2012',  13735301,      ],
+                                 ['2013',  13067245,      ],
+                                 ['2014',  14370121,      ],
+                                 ['2015',  15651598,      ],
+                                 ['2016',  16913716,      ],
+                                 ['2017',  17545071,      ],
+                                 ['2018',  17862562,      ],
+                                 ['2019',  18290926,      ],
+                             ]);
+
+                             var options = {
+                                 title: '디자인산업규모(단위: 백만원)',
+                                 curveType: 'function',
+                                 legend: { position: 'bottom' }
+                             };
+
+                             var chart = new google.visualization.LineChart(document.getElementById('curve_chart001'));
+
+                             chart.draw(data, options);
+                         }
+                     </script>
+                 <div id="curve_chart001" style="width: 900px; height: 500px"></div>
+
+                 <script type="text/javascript">
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChart010);
+
+                    function drawChart010() {
+                        var data = google.visualization.arrayToDataTable([
+                            ['Year', '디자인인력규모' ],
+                            ['2012',  268556,      ],
+                            ['2013',  273525,      ],
+                            ['2014',  284275,      ],
+                            ['2015',  300678,      ],
+                            ['2016',  324277,      ],
+                            ['2017',  333042,      ],
+                            ['2018',  330411,      ],
+                            ['2019',  335903,      ],
+                        ]);
+
+                        var options = {
+                            title: '디자인인력규모(단위: 명)',
+                            curveType: 'function',
+                            legend: { position: 'bottom' },
+                            series: {
+                            0: { color: '#a561bd' },
+          }
+                        };
+
+                        var chart = new google.visualization.LineChart(document.getElementById('curve_chart002'));
+
+                        chart.draw(data, options);
+                    }
+                </script>
+            <div id="curve_chart002" style="width: 900px; height: 500px"></div>
+
+
+                <br><br>
+                <br><br>
+
+                <!-- 02. 디자인 활용업체의 디자인 산업규모 -->
+
+                <h1>02. 디자인 활용업체의 디자인 산업규모 </h1>
+                <br><br>
+                디자인 활용업체의 디자인 산업규모 데이터를 살펴보면 2016년에 중기업의 산업규모가 전년대비 145.7%나 증가했다.
+                중기업의 산업규모가 증가한 대신 대기업의 디자인 산업규모는 무료 52.4%나 감소하였는데 이는 대기업 내부의
+                디자인 투자를 줄이고 중기업의 투자가 늘어났기 때문으로 추정된다.
+                <br><br>
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawVisualization002);
+
+                        function drawVisualization002() {
+                            // Some raw data (not necessarily accurate)
+                            var data = google.visualization.arrayToDataTable([
+                                ['Year', '소기업', '중기업', '대기업'],
+                                ['2012',  5968624,      1911584,         2146935,       ],
+                                ['2013',  6039974,      2806984,        3541117,       ],
+                                ['2014',  6101060,      1932296,        2258662,            ],
+                                ['2015',  6823779,      1534817,        1928955,                ],
+                                ['2016',  6374615,      3771136,         918859,                ],
+                                ['2017',  6440795,      3890773,        1022008,                 ],
+                                ['2018',  6939326,      3605964,         1300821,                  ],
+                                ['2019',  6441470,      4003179,         1339308,                 ]
+                            ]);
+
+                            var options = {
+                                title : '디자인 활용업체의 디자인 산업규모 (단위: 백만원)',
+                                vAxis: {title: '디자인산업규모'},
+                                hAxis: {title: 'Year'},
+                                seriesType: 'bars',
+                                series: {5: {type: 'line'}}
+                                
+                            };
+
+                            var chart = new google.visualization.ComboChart(document.getElementById('chart_div002'));
+                            chart.draw(data, options);
+                        }
+                    </script>
+
+
+                <div id="chart_div002" style="width: 900px; height: 500px;"></div>
+
+                <h2>대기업, CVC 만들어 스타트업 직접 키운다</h2>
+                <p>파이낸셜뉴스입력 2016.07.05 18:01수정 2016.07.05 18:01</p>
+
+                <br>
+                 <img src="001.jpg" width="750" height="316">
+                 <br>
+                 <br>
+                 <P>2016년 7월 파이낸설뉴스에 따르면 통상 자체 연구개발(R&D)이나 인재영입, 간접적인 지분투자 형태로 신사업을 
+                   확대해 온 대기업들이 최근 기업형 벤처캐피털(CVC, Corporate Venture Capital) 직접 설립해 자기 사업에 도움이 
+                   될만한 스타트업을 직접 발굴해 투자하는 사례가 늘고 있다고 한다.
+
+                  CVC란, 외부 출자자를 별도로 모집하지 않고 기업이 직접 투자회사를 설립하는 것으로, 삼성벤처투자가 대표적이다. 
+                  2016년 신기술금융사의 자본금 요건이 기존 200억원에서 100억원 수준으로 완화되면서, 스타트업 투자를 통해 
+                  신성장동력을 확보하려는 움직임이 활발해졌다고 한다. 
+
+                  이는 2015년 전국창조경제혁신센터 출범 당시 전담 기업 수준에 머물렀던 국내 대기업이 스타트업 DNA를 직간접적으로 
+                  경험하며 나타난 변화로 풀이된다.
+                </P>
+                <br>
+                <h2>산업통상자원부 디자인혁신전략 자료 (2016.8.29)</h2>
+                <br>
+                <img src="003.png" width="698" height="837">
+
+                <p> 또한, 산업통상자원부가 발표한 디자인혁신전략 자료에 따르면 대기업 유통망을 활용하여 적극적으로 대기업-중소기업의
+                  상생을 위해 많은 노력을 단행했다는 것을 알 수 있다. 그 결과 대기업의 투자 금액이 중기업으로 유입되어 2016년 대기업-중기업의
+                  그래프 변화가 있었던 것으로 추정된다. 하지만 소기업의 경우 워낙 많은 회사들이 있어 대기업이 직접적으로 투자한 기업이 많지
+                  않았을 것이므로 전체 산업에 미치는 영향은 미비했을 것이다. </p>
+                <br><br>
+                <br><br>
+
+                <!-- 03. 교육부문 디자인 투자 금액 및 인력 현황 -->
+
+                <h1>03. 교육부문 디자인 투자 금액 및 인력 현황 </h1>
+                <br>
+                교육부문에서 디자인교수의 연봉은 꾸준히 상승하였다. 하지만 4년제 대학교의 디자인 교수와 부/조교수간의 간극이 매우 큰 것을
+                확인할 수 있었다. 정교수의 연봉은 2012년 6400만원대에서 2019년 8600만원대까지 상승하였으나, 부/조교수의 연봉은 거의 변동이
+                없었으며, 특히 전임강사의 대우는 2019년에도 여전히 각박한 것으로 나타났다.
+                <br><br>
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawVisualization003);
+
+                        function drawVisualization003() {
+                            // Some raw data (not necessarily accurate)
+                            var data = google.visualization.arrayToDataTable([
+                                ['Year', '교수', '부교수', '조교수', '전임강사'],
+                                ['2012',  64037,      30124,         28321,             6582,           ],
+                                ['2013',  64954,      28392,        33660,             6528,          ],
+                                ['2014',  66044,      26870,        39782,             6409,           ],
+                                ['2015',  71158,      33858,        31622,             6635,           ],
+                                ['2016',  80701,      30752,         36438,             6680,          ],
+                                ['2017',  82156,      28421,         36593,             6558,          ],
+                                ['2018',  84182,      30524,         33746,             7216,          ],
+                                ['2019',  86804,      33300,         33517,             7013,          ]
+                            ]);
+
+                            var options = {
+                                title : '연간 디자인과 교수 연봉 변경',
+                                vAxis: {title: '디자인과교수연봉'},
+                                hAxis: {title: 'Year'},
+                                seriesType: 'bars',
+                                series: {5: {type: 'line'}}
+                            };
+
+                            var chart = new google.visualization.ComboChart(document.getElementById('chart_div003'));
+                            chart.draw(data, options);
+                        }
+                    </script>
+                <div id="chart_div003" style="width: 900px; height: 500px;"></div>
+
+                <br><br>
+                <br><br>
+
+                <!-- 04. 디자인학과 졸업 및 취업 현황 -->
+
+                <h1>04. 디자인학과 졸업 및 취업 현황 </h1>
+
+                        <br>
+                        디자인학과 졸업 및 취업 현황을 살펴보면 졸업자 수가 늘어나다가 2017년부터 점점 줄어드는 경우를 확인할 수 있다.
+                        <br>
+                        취업률은 전반적으로 50~60프로대를 유지하고 있다.
+                        <br><br>
+                        <br><br>
+
+
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <div id="chart_div004"></div>
+                     <br/>
+                     <div id="btn-group">
+                       <button class="button button-blue" id="none">No Format</button>
+                       <button class="button button-blue" id="scientific">Scientific Notation</button>
+                       <button class="button button-blue" id="decimal">Decimal</button>
+                       <button class="button button-blue" id="short">Short</button>
+                     </div>
+
+
+                <br><br>
+                
+                <br><br>
+                <p>디자인학과의 졸업 현황 그래프에서 점진적으로 졸업자수가 줄어드는 것은 전체 대학생 수가 줄어드는 현상과
+                  맥락을 같이 한다. 아래 그래프의 유형별 고등교육기관 재적학생 수를 보면 일반대학, 전문대학, 기타대학, 대학원
+                  가릴 것 없이 모두 점진적으로 학생 수가 줄고 있다는 것을 확인할 수 있다.
+                </p>
+
+                <head>
+                  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                  <script type="text/javascript">
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
+              
+                    function drawChart() {
+                      var data = google.visualization.arrayToDataTable([
+                        ['Year',  '일반대학', '전문대학', '기타대학', '대학원'],
+                        ['2012', 2104,         770,         507,         330],
+                        ['2013', 2120,         758,         484,         330],
+                        ['2014', 2130,         741,         450,         331],
+                        ['2015', 2113,         720,         425,         333],
+                        ['2016', 2085,         697,         386,         333],
+                        ['2017', 2051,         678,         367,         326],
+                        ['2018', 2030,         659,         351,         322],
+                        ['2019', 2002,         644,         346,         319],
+
+                      ]);
+              
+                      var options = {
+                        title: '유형별 고등교육기관 재적학생 수 (단위:천명)',
+                        vAxis: {title: '단위:천명'},
+                        isStacked: true
+                      };
+              
+                      var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div004-1'));
+              
+                      chart.draw(data, options);
+                    }
+                  </script>
+                </head>
+                <body>
+                  <div id="chart_div004-1" style="width: 900px; height: 500px;"></div>
+                </body>
+                <br><br>
+                <br><br>
+              
+
+                <!-- 05. 디자이너 1인당 인건비 투자 -->
+
+                <h1>05. 디자이너 1인당 인건비 투자 </h1>
+
+                        <br>
+                        디자이너 1인당 인건비 투자는 대기업과 소/중기업의 차이가 5~10배의 차이가 있다. 그래프를 보면 2016년에 급격하게 대기업의 투자가 줄었다.
+                        2016년의 대기업 인건비 투자가 줄은 이유는 기존 채용 인력만으로 충분히 업무가 가능한 부분이 있고, 그 외는 중소기업과의 상생
+                        등으로 비용을 감축했기 때문으로 추정된다. 2016년 이전에는 에이전시 등에서 대기업으로 이직하는 케이스가 잦았으나, 2016년 이후에는
+                        대기업에서 채용 인원을 줄이면서 그런 케이스가 많이 줄어들었다.
+                        <br><br>
+                            <head>
+                              <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                              <script type="text/javascript">
+                                google.charts.load('current', {'packages':['corechart']});
+                                google.charts.setOnLoadCallback(drawChart);
+
+                                function drawChart() {
+                                  var data = google.visualization.arrayToDataTable([
+                                    ['Year', '소기업', '중기업', '대기업' ],
+                                    ['2013',  65.43,      69.50,   1307.26,],
+                                    ['2014',  65.43,      87.55,   1847.79,],
+                                    ['2015',  69.54,       87.84,  1526.98,],
+                                    ['2016',  63.20,      110.36,   824.96,],
+                                    ['2017',  56.24,      135.09,   822.63,],
+                                    ['2018',  62.93,      93.95,   1126.77,],
+                                    ['2019',  50.50,      124.58,   1167.02,]
+                                  ]);
+
+                                  var options = {
+                                    title: '기업 규모당 인건비 투자 평균 (단위: 백만원)',
+                                    curveType: 'function',
+                                    legend: { position: 'bottom' }
+                                  };
+
+                                  var chart = new google.visualization.LineChart(document.getElementById('chart_div005'));
+
+                                  chart.draw(data, options);
+                                }
+                              </script>
+                            </head>
+                            <body>
+                              <div id="chart_div005" style="width: 900px; height: 500px"></div>
+                            </body>
+
+                <br><br>
+                <br><br>
+           
+
+                <!-- 06. 규모별 디자인 활용분야 -->
+
+                <h1>06. 규모별 디자인 활용분야 </h1>
+                <br>
+                디자인 분야별 디자인 활용률에 대해서 연간비교 데이터를 시각화로 표현하였다. 디자인 분야는
+                전통적인 강자였던 시각디자인 분야와 최근에 대두되고 있는 서비스/경험디자인, 그리고 과거에
+                유망한 분야였던 디지털/멀티미디어 디자인/콘텐츠 디자인, 공간/환경 디자인 이렇게 네 가지 
+                카테고리로 분석해 보았다.
+                <br><br>
+                <br><br>
+
+                <h2>06. 디자인 분야 디자인 활용 연간 비교 </h2>
+
+                <br>
+                데이터 시각화로 구현해보니, 전통적으로 강세였던 시각디자인 분야와 디지털/멀티미디어 디자인/콘텐츠 디자인
+                분야는 꾸준히 하락세를 보였다. 특히 디지털/멀티미디어 디자인/콘텐츠 디자인 분야는 2019년 5프로 미만대로
+                떨어지면서 거의 현재는 디자인 투자가 잘 이루어지지 않는다는 것을 파악할 수 있다.
+
+                <br><br>
+                반면에 IT 업계가 급부상하면서 서비스/경험디자인의 강세가 두드러진다. 이 분야는 UX분야가 속해 있으며
+                시각디자인의 일부 영역이 이 분야로 넘어온 것으로 보인다. 2012년 8.6%의 점유율이었던 서비스/경험디자인은
+                2018년 19.87%로 최고치를 기록했다가 2019년에 17.15%로 소폭 낮아졌다.
+
+
+                <head>
+                  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                  <script type="text/javascript">
+                    google.charts.load('current', {'packages':['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
+
+                    function drawChart() {
+                      var data = google.visualization.arrayToDataTable([
+                        ['Year', '시각디자인', '서비스/경험디자인', '디지털/멀티미디어 디자인/콘텐츠 디자인', '공간/환경디자인'],
+                        ['2012',  54.8,      8.6,      26.3,      29.8],
+                        ['2013',  53.5,      6.6,      24.0,      13.2],
+                        ['2014',  46.4,      7.9,      19.2,      17.1],
+                        ['2015',  30.3,      5.8,      17.9,      16.7],
+                        ['2016',  32.26,     13.86,    12.33,     14.96],
+                        ['2017',  32.53,     12.77,    12.47,     17.34],
+                        ['2018',  33.96,     19.87,     10.85,    14.06],
+                        ['2019',  23.00,     17.15,     4.84,     14.19]
+                      ]);
+
+                      var options = {
+                        title: '디자인 분야 디자인 활용 연간 비교 (단위%, 중복응답, 디자인 활용업체 전체 기준)',
+                        hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+                        vAxis: {minValue: 0}
+                      };
+
+                      var chart = new google.visualization.AreaChart(document.getElementById('chart_div006'));
+                      chart.draw(data, options);
+                    }
+                  </script>
+                </head>
+                <body>
+                  <div id="chart_div006" style="width: 100%; height: 500px;"></div>
+                </body>
+                <br><br>
+
+                <h2>06-1. 규모별 디자인 활용분야: 시각디자인 </h2>
+
+                <br>
+                규모별 디자인 활용분야 중 시각디자인 분야는 전체 산업에서 점점 활용률이 떨어지는 것을 확인할 수 있었다.
+                하지만 2018년에 대기업 카테고리에서 61.01%의 사용률을 잠시 보여준 적이 있는데, 이는 평창동계올림픽과 월드컵, 아시안게임 등 
+                스포츠 빅이벤트의 영향이 컷던 것으로 보인다. 제일기획 매거진에 따르면 2018년 광고 시장 규모는 전년 대비 4.6% 성장한 11조 7,020억 원을 기록했다.
+                특히 2018년은 디지털 광고비가 전년 대비 14.4% 성장, 최초로 방송 광고비를 역전하면서 매체 광고 시장의 지각 변동을 예고했다.
+                이러한 광고 시장의 변화가 시각디자인의 대기업 활용을 이끌었다고 판단된다.
+                <br><br>
+
+                  <head>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                      google.charts.load('current', {'packages':['corechart']});
+                      google.charts.setOnLoadCallback(drawVisualization);
+                
+                      function drawVisualization() {
+                        // Some raw data (not necessarily accurate)
+                        var data = google.visualization.arrayToDataTable([
+                          ['Year', '전체 (디자인활용업체)', '소기업', '중기업', '대기업' ],
+                          ['2012',  54.8,      52.5,     65.8,    75.1 ],
+                          ['2013',  53.5,      51.6,     61.1,    69.8 ],
+                          ['2014',  46.4,      46.9,     46.4,    16.8 ],
+                          ['2015',  30.3,      28.7,     38.5,    43.3 ],
+                          ['2016',  32.26,     34.56,    25.70,   21.21 ],
+                          ['2017',  32.53,     31.69,    35.04,   29.26 ],
+                          ['2018',  33.96,     32.69,    37.40,   61.01 ],
+                          ['2019',  23.00,     23.62,    19.98,   21.13 ]
+                        ]);
+                
+                        var options = {
+                          title : '규모별 디자인 활용분야: 시각디자인 (단위 %, 중복응답)',
+                          vAxis: {title: '퍼센트'},
+                          hAxis: {title: 'Year'},
+                          seriesType: 'bars',
+                          series: {5: {type: 'line'}}
+                        };
+                
+                        var chart = new google.visualization.ComboChart(document.getElementById('chart_div006-2'));
+                        chart.draw(data, options);
+                      }
+                    </script>
+                  </head>
+                  <body>
+                    <div id="chart_div006-2" style="width: 900px; height: 500px;"></div>
+                  </body>
+
+                  <img src="002.jpg" width="750" height="417">
+                  <br><br>
+                  2018년은 평창올림픽이 있던 시기였다. 따라서 대기업의 시각디자인 투자가 크게 일어났을 것으로 추정된다.
+                  <br><br>
+                  <br><br>
+
+                  <h2>06-2. 규모별 디자인 활용분야: 서비스/경험디자인 </h2>
+
+                    <br>
+                    서비스/경험디자인은 2015년부터 급성장하기 시작하여 2016년에 대기업 활용이 24.31%로 높은 수치를 보였다가
+                    2019년에 41.69%로 최고치를 경신했다. 이는 2010년대 중반에 IT 업계의 호황과 더불어 UX디자인의 중요성이
+                    매우 커졌기 때문으로 추정된다. 2017-2018년의 대기업의 서비스/경험디자인 활용은 주춤하였으나, 중소기업과의
+                    활용이 매우 커졌고, 이는 스타트업 붐과도 무관하지 않다. 2019년에 다시 대기업의 서비스/경험디자인 투자가
+                    늘어난 것은 4차산업 시대가 도래하면서 CES 2017/18에서 발표된 인공지능 비서부터 2019년 사물인터넷, 스마트홈,
+                    로봇공학, 블록체인, 빅데이터 분석 등 다양한 IT 기술들이 쏟아지기 시작하면서인 것으로 추정된다.
+                    <br><br>
+    
+                      <head>
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                          google.charts.load('current', {'packages':['corechart']});
+                          google.charts.setOnLoadCallback(drawVisualization);
+                    
+                          function drawVisualization() {
+                            // Some raw data (not necessarily accurate)
+                            var data = google.visualization.arrayToDataTable([
+                            ['Year', '전체 (디자인활용업체)', '소기업', '중기업', '대기업' ],
+                            ['2012',  8.6,      8.6,     8.7,    7.2 ],
+                            ['2013',  6.6,      6.9,     5.2,    5.0 ],
+                            ['2014',  7.9,      8.7,     4.4,    2.6 ],
+                            ['2015',  5.8,      4.1,     14.5,    10.9 ],
+                            ['2016',  13.86,     12.37,    17.76,   24.31 ],
+                            ['2017',  12.77,     12.30,    15.22,   7.97 ],
+                            ['2018',  19.87,     20.31,    18.13,   7.28 ],
+                            ['2019',  17.15,     19.00,    8.98,   41.69 ]
+                          ]);
+                    
+                            var options = {
+                              title : '규모별 디자인 활용분야: 서비스/경험디자인 (단위 %, 중복응답)',
+                              vAxis: {title: '퍼센트'},
+                              hAxis: {title: 'Year'},
+                              seriesType: 'bars',
+                              series: {5: {type: 'line'}}
+                            };
+                    
+                            var chart = new google.visualization.ComboChart(document.getElementById('chart_div006-3'));
+                            chart.draw(data, options);
+                          }
+                        </script>
+                      </head>
+                      <body>
+                        <div id="chart_div006-3" style="width: 900px; height: 500px;"></div>
+                      </body>
+
+                      <br>
+                
+                      <h2>06-3. 규모별 디자인 활용분야: 디지털/멀티미디어 디자인/콘텐츠 디자인 </h2>
+
+                      <br>
+                      전통적인 강세였던 디지털/멀티미디어 디자인/콘텐츠 디자인 영역의 경우 꾸준히 디자인 활용률이 하락세를
+                      보이면서 2019년에는 전 규모에서 10프로 미만의 활용률을 보였다. 해당 분야는 진입장벽이 낮아지고
+                      특히 AI 기술로 대체 가능한 분야로 인식되면서 신규 디자인 활용 투자는 점점 더 줄어들 것으로 예상된다.
+                      <br><br>
+      
+                        <head>
+                          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                          <script type="text/javascript">
+                            google.charts.load('current', {'packages':['corechart']});
+                            google.charts.setOnLoadCallback(drawVisualization);
+                      
+                            function drawVisualization() {
+                              // Some raw data (not necessarily accurate)
+                              var data = google.visualization.arrayToDataTable([
+                              ['Year', '전체 (디자인활용업체)', '소기업', '중기업', '대기업' ],
+                              ['2012',  26.3,      24.8,     33.2,    41.3 ],
+                              ['2013',  24.0,      23.5,     25.7,    37.7 ],
+                              ['2014',  19.2,      20.1,     15.6,    17.9 ],
+                              ['2015',  17.9,      17.9,     17.3,    23.6 ],
+                              ['2016',  12.33,     12.17,    13.18,   2.66 ],
+                              ['2017',  12.47,     12.04,    14.11,   6.95 ],
+                              ['2018',  10.85,     12.68,    5.83,   2.57 ],
+                              ['2019',  4.84,     4.64,    5.74,   1.39 ]
+                            ]);
+                      
+                              var options = {
+                                title : '규모별 디자인 활용분야: 디지털/멀티미디어 디자인/콘텐츠 디자인 (단위 %, 중복응답)',
+                                vAxis: {title: '퍼센트'},
+                                hAxis: {title: 'Year'},
+                                seriesType: 'bars',
+                                series: {5: {type: 'line'}}
+                              };
+                      
+                              var chart = new google.visualization.ComboChart(document.getElementById('chart_div006-4'));
+                              chart.draw(data, options);
+                            }
+                          </script>
+                        </head>
+                        <body>
+                          <div id="chart_div006-4" style="width: 900px; height: 500px;"></div>
+                        </body>
+
+                        <br>
+                        <h2>06-4. 규모별 디자인 활용분야: 공간/환경 디자인 </h2>
+
+                        <br>
+                        공간/환경 디자인 영역은 2017년에 유의미한 데이터를 발견하여 자료에 추가하였다. 2017년 대기업의
+                        공간/환경 디자인의 디자인 활용이 전년 대비 3배 이상 뛰었다가 다시 2018년에 절반으로 줄은 것을
+                        확인할 수 있었다. 이는 문재인 정부가 출범하면서 촛불시민혁명으로 탄생한 정부인 만큼 다양한
+                        사회 인프라를 확충하기 위해 노력했기 때문으로 추정된다. 
+                        <br><br>
+        
+                          <head>
+                            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                            <script type="text/javascript">
+                              google.charts.load('current', {'packages':['corechart']});
+                              google.charts.setOnLoadCallback(drawVisualization);
+                        
+                              function drawVisualization() {
+                                // Some raw data (not necessarily accurate)
+                                var data = google.visualization.arrayToDataTable([
+                                ['Year', '전체 (디자인활용업체)', '소기업', '중기업', '대기업' ],
+                                ['2012',  29.8,      30.1,     28.9,    20.8 ],
+                                ['2013',  13.2,      15.0,     5.2,    12.5 ],
+                                ['2014',  17.1,      17.8,     14.8,   5.7 ],
+                                ['2015',  16.7,      18.5,     7.3,    9.2 ],
+                                ['2016',  14.96,     14.95,    15.38,   12.94 ],
+                                ['2017',  17.34,     17.87,    14.97,   40.66 ],
+                                ['2018',  14.06,     13.51,    15.95,   19.29 ],
+                                ['2019',  14.19,     13.11,    18.68,   13.27 ]
+                              ]);
+                        
+                                var options = {
+                                  title : '규모별 디자인 활용분야: 공간/환경 디자인 (단위 %, 중복응답)',
+                                  vAxis: {title: '퍼센트'},
+                                  hAxis: {title: 'Year'},
+                                  seriesType: 'bars',
+                                  series: {5: {type: 'line'}}
+                                };
+                        
+                                var chart = new google.visualization.ComboChart(document.getElementById('chart_div006-5'));
+                                chart.draw(data, options);
+                              }
+                            </script>
+                          </head>
+                          <body>
+                            <div id="chart_div006-5" style="width: 900px; height: 500px;"></div>
+                          </body>
+                          <br>
+                          <p>문재인정부 국정운영 5개년 계획에 따르면 사회서비스 공공인프라 구축 (복지부), 
+                            국가기간교통망 공공성 강화 및 국토교통산업 경쟁력 강화 (국토부), 
+                            전 지역이 고르게 잘사는 국가균형발전 (산업부ㆍ행자부ㆍ국토부) 등
+                            다양한 정책을 기획하고 실행하였다. 이러한 기조로 공간/환경 디자인의
+                            대기업 투자가 크게 늘어났을 것으로 예상된다. </p>
+                          <br><br>
+                          <img src="004.png" width="836" height="534">
+                          <br><br>
+                          <br><br><br>
+                          
+                        
+
+
+                      <!-- 07. 디자인 활용률 -->
+
+                      <h1>07. 디자인 활용률 </h1>
+
+                      <br>
+                      전체산업 기준, 디자인특수분류 기준 디자인 활용률은 모두 점진적으로 성장하였다. 전체산업 기준 2012년 디자인 활용률은
+                      13.9%였으나 2019년에는 17.2%까지 성장하였다. 디자인특수분류 기준 디자인 활용률은 2012년 기준 26.6%에서 2019년 기준
+                      37.1%까지 성장하였다. 
+                      <br><br>
+                    
+                            <head>
+                              <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                              <script type="text/javascript">
+                                google.charts.load('current', {'packages':['corechart']});
+                                google.charts.setOnLoadCallback(drawChart);
+                          
+                                function drawChart() {
+                                  var data = google.visualization.arrayToDataTable([
+                                    ['Year',  '전체산업 기준', '디자인특수분류 기준'],
+                                    ['2012', 13.9,         26.6],
+                                    ['2013',     12.8,         27.2],
+                                    ['2014', 13.0,         27.6],
+                                    ['2015',     13.7,         29.0],
+                                    ['2016', 16.0,         33.6],
+                                    ['2017',     16.4,         34.4],
+                                    ['2018', 16.8,         35.9],
+                                    ['2019',     17.2,         37.1],
+      
+                                  ]);
+                          
+                                  var options = {
+                                    title: '디자인 활용률 (전체산업기준/디자인특수분류 기준)',
+                                    vAxis: {title: '단위:퍼센트'},
+                                    isStacked: true
+                                  };
+                          
+                                  var chart = new google.visualization.SteppedAreaChart(document.getElementById('chart_div'));
+                          
+                                  chart.draw(data, options);
+                                }
+                              </script>
+                            </head>
+                            <body>
+                              <div id="chart_div" style="width: 900px; height: 500px;"></div>
+                            </body>
+                     
+                          
+                            <br><br>
+                  <br><br>
+
+
+
+                <!-- 08. 디자인의 경제적 가치 -->
+
+                <h1>08. 디자인의 경제적 가치 </h1>
+
+                <br>
+                01에서 확인한 디자인 산업의 성장과 더불어 디자인의 경제적 가치 또한 엄청난 성장을 이루었다. 
+                2012년 약 69조원의 가치를 지녔던 디자인 산업은 2019년에는 128조원의 경제적 가치를 지녔다. 
+                디자인 산업군은 실제 1.3배 시장이 커졌으나, 경제적 가치는 약 1.8배 이상의 차이를 보였다.
+                이는 사회가 디자인의 가치를 바라보는 인식이 그만큼 더 커졌다고 판단할 수 있다.
+                <br>
+
+                <head>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                      google.charts.load('current', {'packages':['corechart']});
+                      google.charts.setOnLoadCallback(drawChart);
+
+                      function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+                        ['Year', '디자인의 경제적 가치' ],
+                          ['2012',  69467648,      ],
+                          ['2013',  89040381,      ],
+                          ['2014',  93015339,      ],
+                          ['2015',  94180711,      ],
+                          ['2016',  103843576,      ],
+                          ['2017',  117389947,      ],
+                          ['2018',  124339493,      ],
+                          ['2019',  128342209,      ]
+                        ]);
+
+                        var options = {
+                          title: '디자인의 경제적 가치(단위: 백만원)',
+                          curveType: 'function',
+                          legend: { position: 'bottom' },
+                          series: {
+                            0: { color: '#f1ca3a' },
+          }
+                        };
+
+                        var chart = new google.visualization.LineChart(document.getElementById('chart_div008'));
+
+                        chart.draw(data, options);
+                      }
+                    </script>
+                  </head>
+                  <body>
+                    <div id="chart_div008" style="width: 900px; height: 500px"></div>
+                  </body>
+
+                  <br><br>
+                  <br><br>
+                  <br><br>
+
+
+                  <!-- 09. 디자인 활용업체 비율 추이 -->
+
+                  <h1>09. 디자인 활용업체 비율 추이 </h1>
+
+                  <br>
+                  디자인 활용업체 비율 추이 또한 다른 지표와 마찬가지로 전체산업 기준, 디자인 특수분류 기준 모두
+                  고르게 성장하였다. 하지만 디자인 특수분류 기준 디자인 활용업체 비율이 2019년에도 50프로가 넘지 
+                  않는다는 점이 의외인 부분이었다.
+                  <br><br>
+
+
+                      <head>
+                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                        <script type="text/javascript">
+                          google.charts.load('current', {'packages':['corechart']});
+                          google.charts.setOnLoadCallback(drawChart);
+
+                          function drawChart() {
+                            var data = google.visualization.arrayToDataTable([
+                            ['Year', '전체산업 기준', '디자인 특수분류 기준' ],
+                              ['2012',  13.9,      26.6,   ],
+                              ['2013',  12.8,      27.2,   ],
+                              ['2014',  13.0,      27.6,   ],
+                              ['2015',  13.7,      29.0,  ],
+                              ['2016',  16.0,      33.6,  ],
+                              ['2017',  16.4,      34.4,  ],
+                              ['2018',  16.8,      35.9,   ],
+                              ['2019',  17.2,      37.1,   ]
+                            ]);
+
+                            var options = {
+                              title: '디자인 활용업체 비율 추이 (단위: 퍼센트)',
+                              curveType: 'function',
+                              legend: { position: 'bottom' }
+                            };
+
+                            var chart = new google.visualization.LineChart(document.getElementById('chart_div009'));
+
+                            chart.draw(data, options);
+                          }
+                        </script>
+                      </head>
+                      <body>
+                        <div id="chart_div009" style="width: 900px; height: 500px"></div>
+                      </body>
+
+                      <br><br>
+                      <br><br>
+
+                <h1>10. 디자이너 고용 전망 </h1>
+                <br>
+                디자이너 고용 전망은 전년대비 같으면 100%, 증가하면 100%이상, 감소하면 그 이하로 나타난다.
+                디자이너 고용 전망은 2015년에 소폭 감소하였으나, 그 이후로는 회복하여 큰 차이가 없는 것으로 나타났다.
+                2020년, 2021년 디자이너 고용 전망은 예년과 크게 다르지 않을 것으로 예상되었으나, 현재 그래프는
+                코로나 시국을 반영하지 않은 지표이므로, 코로나 특수 상황의 데이터를 추가하면 다른 결과가 나올 것으로
+                예상된다.
+                <br><br>
+
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart010);
+
+                        function drawChart010() {
+                            var data = google.visualization.arrayToDataTable([
+                                ['Year', '디자이너 고용 전망' ],
+                                ['2013',  102.75,      ],
+                                ['2014',  101.74,      ],
+                                ['2015',  96.17,      ],
+                                ['2016',  102.78,      ],
+                                ['2017',  103.45,      ],
+                                ['2018',  100.13,      ],
+                                ['2019',  101.63,      ],
+                                ['2020',  101.08,      ],
+                                ['2021',  101.13,      ]
+                            ]);
+
+                            var options = {
+                                title: '디자이너 고용 전망(단위: 퍼센트)',
+                                curveType: 'function',
+                                legend: { position: 'bottom' },
+                                series: {
+                            0: { color: '#1c91c0' },
+                        }
+                        };
+
+                            var chart = new google.visualization.LineChart(document.getElementById('curve_chart010'));
+
+                            chart.draw(data, options);
+                        }
+                    </script>
+                <div id="curve_chart010" style="width: 900px; height: 500px"></div>
+
+
+</div>
 
 
 
 
-            <!-- End your code here -->
-        </div>
-        <!-- End of Main Container -->
 
-        <div class="p-3"></div>
 
-        <!-- Optional JavaScript; choose one of the two! -->
+<!-- End your code here -->
+</div>
+<!-- End of Main Container -->
 
-        <!-- Option 1: Bootstrap Bundle with Popper -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<div class="p-3"></div>
 
-        <!-- Option 2: Separate Popper and Bootstrap JS -->
-        <!--
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
-        -->
-    </body>
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<script src="graph.js"></script>
+<!-- Option 2: Separate Popper and Bootstrap JS -->
+<!--
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+-->
+</body>
 </html>
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete
